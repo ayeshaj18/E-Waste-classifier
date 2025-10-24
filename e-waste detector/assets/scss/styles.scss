@@ -1,0 +1,567 @@
+// Import of partial files
+@import 'config/variables';
+@import 'base/base';
+@import 'theme/theme';
+@import 'layout/layout';
+@import 'components/header';
+@import 'components/home';
+@import 'components/buttons';
+@import 'components/features';
+@import 'components/security';
+@import 'components/services';
+@import 'components/app';
+@import 'components/about';
+@import 'components/footer';
+@import 'components/scroll';
+@import 'components/mediaqueries';
+
+/*=============== THEME ===============*/
+/*========== Variables Dark theme ==========*/
+body.dark-theme{
+    --first-color-light: hsl(var(--hue), var(--sat), 75%);
+    --title-color: hsl(var(--hue), 4%, 95%);
+    --text-color: hsl(var(--hue), 4%, 80%);
+    --body-color: hsl(var(--hue), 8%, 13%);
+    --container-color: hsl(var(--hue), 8%, 16%);
+    --scroll-bar-color: hsl(var(--hue), 4%, 32%);
+    --scroll-thumb-color: hsl(var(--hue), 4%, 24%);
+}
+
+/*========== Button Dark/Light ==========*/
+.change-theme {
+    position: absolute;
+    right: 1.5rem;
+    top: 2.2rem;
+    color: var(--title-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.dark-theme .footer{
+    background-color: var(--container-color);
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section{
+    padding: 4.5rem 0 1rem;
+    
+    &__title, &__title-center{
+        font-size: var(--h2-font-size);
+        color: var(--title-color);
+        text-align: center;
+        margin-bottom: var(--mb-1);
+    }
+}
+
+.svg{
+    &__color{
+        fill: var(--first-color);
+    }
+    &__blob{
+        fill: var(--first-color-light);
+    }
+    &__img{
+        width: 300px;
+        justify-self: center;
+    }
+}
+
+/*=============== LAYOUT ===============*/
+.container{
+    max-width: 968px;
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+}
+
+.grid{
+    display: grid;
+    gap: 1.5rem;
+}
+
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap');
+/*=============== VARIABLES CSS ===============*/
+:root{
+    --header-height: 3rem;
+
+    /*========== Colors ==========*/
+    --hue: 131; //  Yellow: 45   | Red: 4 | Orange: 18  | Green: 118
+    --sat: 20%; // Yellow: 98% | Red: 90% | Orange: 85% | Green: 50%
+    --first-color: hsl(var(--hue), var(--sat), 60%);
+    --first-color-light: hsl(var(--hue), var(--sat), 85%);
+    --first-color-lighten: hsl(var(--hue), var(--sat), 80%);
+    --first-color-alt: hsl(var(--hue), var(--sat), 53%);
+    --title-color: hsl(var(--hue), 4%, 15%);
+    --text-color: hsl(var(--hue), 4%, 35%);
+    --text-color-light: hsl(var(--hue), 4%, 65%);
+    --body-color: hsl(var(--hue), 0%, 100%);
+    --container-color: #FFF;
+    --scroll-bar-color: hsl(var(--hue), 4%, 85%);
+    --scroll-thumb-color: hsl(var(--hue), 4%, 75%);
+    
+
+    /*========== Font and typography ==========*/
+    --body-font: "Playwrite AU TAS";
+
+    --biggest-font-size: 3rem;
+    --h2-font-size: 3rem;
+    --h3-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    // Responsive typography
+    @media screen and (min-width: 968px){
+        --biggest-font-size: 3rem;
+        --h2-font-size: 3rem;
+        --h3-font-size: 2rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+
+    /*========== Font weight ==========*/
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /*========== Margenes ==========*/
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/*=============== BASE ===============*/
+*,::before,::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: .5s; // For animation dark mode
+}
+
+h1,h2,h3{
+    font-weight: var(--font-semi-bold);
+    color: var(--title-color);
+    line-height: 1.5;
+}
+
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*=============== ABOUT ===============*/
+.about{
+    &__container{
+        gap: 2.5rem;
+    }
+    &__data{
+        text-align: center;
+    }
+}
+
+/*=============== APP ===============*/
+.app{
+    &__container{
+        gap: 2.5rem;
+    }
+    &__data{
+        text-align: center;
+    }
+    &__description{
+        margin-bottom: var(--mb-1-5);
+    }
+    &__buttons{
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        justify-content: center;
+        gap: .5rem
+    }
+}
+
+/*=============== BUTTONS ===============*/
+.button{
+    
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #1A1A1A; // Use color black for yellow
+    padding: .75rem 1.5rem;
+    border-radius: 3rem; 
+    font-weight: var(--font-semi-bold);
+    transition: .3s;
+    
+    &:hover{
+        background-color: var(--first-color-alt);
+    }
+
+    &__header{
+        display: none;
+    }
+
+    &-link{
+        background: none;
+        padding: 0;
+        color: var(--title-color);
+
+        &:hover{
+            background-color: transparent;
+        }
+    }
+
+    &-flex{
+        display: inline-flex;
+        align-items: center;
+        column-gap: .25rem;
+        padding: .75rem 1rem;
+    }
+
+    &__icon{
+        font-size: 1.5rem;
+    }
+}
+
+/*=============== CONTACT ===============*/
+.contact{
+    &__container{
+        padding-bottom: 3rem;
+    }
+    &__description{
+        text-align: center;
+    }
+    &__content{
+        row-gap: .75rem;
+    }
+    &__address{
+        font-size: 3rem;
+        font-weight: var(--font-semi-bold);
+        color: var(--title-color);
+    }
+    &__information{
+        font-weight: initial;
+        color: var(--text-color);
+    }
+}
+
+/*=============== FOOTER ===============*/
+.footer{
+    background-color: var(--first-color-lighten);
+    padding-bottom: 2rem;
+
+    &__container{
+        row-gap: 2rem;
+    }
+
+    &__logo, 
+    &__title{
+        font-size: 2rem;
+        margin-bottom: var(--mb-0-75);
+    }
+    &__logo{
+        display: inline-block;
+        font-weight: var(--font-semi-bold);
+        color: var(--title-color);
+    }
+    &__description,
+    &__link{
+        font-size: var(--small-font-size);
+    }
+    &__links{
+        display: grid;
+        row-gap: .5rem;
+    }
+    &__link{
+        color: var(--title-color);
+    }
+    &__social{
+        display: flex;
+        column-gap: 1.5rem;
+
+        &-link{
+            font-size: 1.25rem;
+            color: var(--title-color);
+        }
+    }
+    &__copy{
+        margin-top: 6rem;
+        text-align: center;
+        font-size: var(--smaller-font-size);
+        color: var(--text-color);
+    }
+}
+
+/*=============== HOME ===============*/
+.home{
+    &__container{
+        row-gap: 3rem;
+    }
+    &__title{
+        font-size: var(--biggest-font-size);
+        font-weight: var(--font-bold);
+        margin-bottom: var(--mb-0-75);
+    }
+    &__description{
+        margin-bottom: var(--mb-2);
+    }
+}
+
+/*=============== MEDIA QUERIES ===============*/
+/* For small devices */
+@media screen and (max-width: 360px){
+    .svg__img{
+        width: 100%;
+    }
+
+    .section{
+        padding: 3.5rem 0 1rem;
+    }
+
+    .services__img{
+        width: 100px;
+    }
+
+    .app__buttons{
+        grid-template-columns: max-content;
+    }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px){
+    .svg__img{
+        width: 100%;
+    }
+
+    .section__title-center{
+        text-align: initial;
+    }
+
+    .home__container, 
+    .about__container,
+    .security__container,
+    .services__container,
+    .app__container,
+    .contact__container,
+    .footer__container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home__img{
+        order: 1;
+    }
+
+    .home__container,
+    .about__container,
+    .security__container,
+    .app__container,
+    .contact__container{
+        align-items: center;
+    }
+
+    .about__data,
+    .security__data,
+    .app__data,
+    .contact__description{
+        text-align: initial;
+    }
+
+    .about__img,
+    .app__img{
+        order: -1;
+    }
+}
+
+@media screen and (min-width: 767px){
+    body{
+        margin: 0;
+    }
+    
+    .section{
+        padding: 6rem 0 2rem;
+    }
+
+    .nav{
+        height: calc(var(--header-height) + 1.5rem);
+
+        &__list{
+            flex-direction: row;
+            column-gap: 2.5rem;
+        }
+        &__toggle{
+            display: none;
+        }
+    }
+
+    .change-theme{
+        position: initial;
+    }
+
+    .home__container{
+        padding: 6rem 0 2rem;
+    }
+
+    .app__buttons{
+        justify-content: initial;
+    }
+}
+
+/* For large devices */
+@media screen and (min-width: 968px){
+    .button__header{
+        display: block;
+    }
+
+    .svg__img{
+        width: 470px;
+    }
+
+    .about__container,
+    .security__container,
+    .app__container,
+    .contact__container{
+        column-gap: 6rem;
+    }
+
+    .services__container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact__container{
+        grid-template-columns: 3fr 1.5fr 1.25fr;
+    }
+
+    .footer{
+        &__container{
+            grid-template-columns: repeat(5, 1fr);
+        }
+        &__social{
+            align-items: flex-start;
+
+            &-link{
+                font-size: 1.45rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home{
+        &__img{
+            width: 540px;
+        }
+        &__description{
+            padding-right: 5rem;
+        }
+    }
+
+    .footer__container{
+        column-gap: 3rem;
+    }
+
+    .scrollup{
+        right: 2rem;
+    }
+}
+
+/*=============== SCROLL UP ===============*/
+.scrollup{
+    position: fixed;
+    background: var(--first-color);
+    right: 1rem;
+    bottom: -20%;
+    display: inline-flex;
+    padding: .3rem;
+    border-radius: .25rem;
+    z-index: var(--z-tooltip);
+    opacity: .8;
+    transition: .4s;
+
+    &:hover{
+        background-color: var(--first-color);
+        opacity: 1;
+    }
+
+    &__icon{
+        font-size: 1.25rem;
+        color: var(--title-color);
+    }
+}
+
+/* Show Scroll Up*/
+.show-scroll{
+    bottom: 3rem;
+}
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+    width: .6rem;
+    border-radius: .5rem;
+    background-color: var(--scroll-bar-color);
+
+    &-thumb{
+        background-color: var(--scroll-thumb-color);
+        border-radius: .5rem;
+        
+        &:hover{
+            background-color: var(--text-color-light);
+        }
+    }
+}
+
+/*=============== SECURITY ===============*/
+.security{
+    &__container{
+        gap: 2.5rem;
+    }
+    &__data{
+        text-align: center;
+    }
+}
+
+/*=============== SERVICES ===============*/
+.services{
+    &__container{
+        padding-top: 1rem;
+    }
+    &__data{
+        display: grid;
+        row-gap: 1rem;
+        background-color: var(--container-color);
+        box-shadow: 0px 2px 6px hsla(var(--hue), 100%, 15%, 0.15);
+        padding: 2rem 1.5rem;
+        border-radius: 1rem;
+        text-align: center;
+    }
+    &__img{
+        width: 135px;
+        justify-self: center;
+        margin-bottom: var(--mb-0-5);
+    }
+}
+
